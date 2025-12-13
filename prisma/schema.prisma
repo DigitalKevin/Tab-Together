@@ -10,16 +10,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Group {
+  id        String  @id @default(cuid())
+  name      String
+  people    Person[]
+  expenses  Expense[]
+  createdAt DateTime @default(now())
+}
+
 model Person {
   id        Int     @id @default(autoincrement())
-  name      String  @unique
+  name      String
+  groupId   String  @default("default")
+  group     Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
   expenses  Expense[]
+
+  @@unique([groupId, name])
 }
 
 model Expense {
   id           Int     @id @default(autoincrement())
   description  String?
   amount       Float
+  groupId      String  @default("default")
+  group        Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
   payerId      Int
   payer        Person  @relation(fields: [payerId], references: [id], onDelete: Cascade)
   participantIds  String  // JSON array stored as string

@@ -2,8 +2,11 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(req) {
   try {
-    const people = await prisma.person.findMany();
-    const expenses = await prisma.expense.findMany();
+    const { searchParams } = new URL(req.url);
+    const groupId = searchParams.get('groupId') || 'default';
+
+    const people = await prisma.person.findMany({ where: { groupId }, orderBy: { id: 'asc' } });
+    const expenses = await prisma.expense.findMany({ where: { groupId } });
 
     if (people.length === 0) {
       return Response.json({ people: [], balances: {}, settlements: [] });
