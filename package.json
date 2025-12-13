@@ -1,11 +1,20 @@
 {
-  "name": "fairshare-root",
-  "version": "1.0.0",
+  "name": "fairshare",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"node backend/index.cjs\" \"npm --prefix frontend run dev\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "next": "^14.1.4",
+    "@prisma/client": "^5.11.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "prisma": "^5.11.0"
   }
 }
