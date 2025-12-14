@@ -17,7 +17,7 @@ export default function PeopleForm({ onAdded, refreshSignal, groupId }) {
       }
     };
     fetchPeople();
-  }, [refreshSignal]);
+  }, [refreshSignal, groupId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

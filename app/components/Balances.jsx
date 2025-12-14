@@ -15,7 +15,7 @@ export default function Balances({ refreshSignal, groupId }) {
       }
     };
     fetchData();
-  }, [refreshSignal]);
+  }, [refreshSignal, groupId]);
 
   if (!data) return <div className="card">Loading...</div>;
 

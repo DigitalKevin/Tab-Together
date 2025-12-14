@@ -20,7 +20,7 @@ export default function ExpenseForm({ onAdded, refreshSignal, groupId }) {
       }
     };
     fetchPeople();
-  }, [refreshSignal]);
+  }, [refreshSignal, groupId]);
 
   const handleToggleParticipant = (id) => {
     const newSet = new Set(participants);

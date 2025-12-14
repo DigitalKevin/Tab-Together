@@ -19,7 +19,7 @@ export default function ExpenseList({ refreshSignal, onDelete, groupId }) {
       }
     };
     fetchData();
-  }, [refreshSignal]);
+  }, [refreshSignal, groupId]);
 
   useEffect(() => {
     const fetchPeople = async () => {
@@ -31,7 +31,7 @@ export default function ExpenseList({ refreshSignal, onDelete, groupId }) {
       }
     };
     fetchPeople();
-  }, [refreshSignal]);
+  }, [refreshSignal, groupId]);
 
   const handleEdit = (expense) => {
     setEditingId(expense.id);
