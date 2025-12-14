@@ -53,8 +53,7 @@ export async function POST(req) {
     return Response.json(
       {
         ...expense,
-        participants: JSON.parse(expense.participantIds),
-        participantIds: undefined,
+        participants: expense.participants ?? [],
       },
       { status: 201 }
     );
